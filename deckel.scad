@@ -48,7 +48,10 @@ translate([0,0,deckeldicke]) difference()
 	cylinder(deckelhoehe-deckeldicke, r=rohraussen/2);
 	cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2);
 }
-	translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2); // Loch M7 Gewinde
+
+	// Loch fuer das Poti: Gewinde M7
+	translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2);
+
 	// Platz fuer Potikoerper
 	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
 	translate([0,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2 - randstaerkeinnen);

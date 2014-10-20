@@ -11,9 +11,11 @@ randstaerkeaussen = 3.6;
 spacerinnen=29;
 spaceraussen=36;
 toleranz = 0.2;
-knopfdurchmesser = 23.7; // mit Rand, sonst 21
+knopfdurchmesser = 23.7; // mit Rand
 poticenter = (spaceraussen-knopfdurchmesser)/2;
 poticenter = (rohrinnen-12.5)/2 - toleranz;
+potidurchmesser = 12.5;
+innenknopfdurchmesser = 21;
 kabeldicke=3.3;
 m7=7;
 
@@ -34,6 +36,12 @@ module voll() {
 	};
 };
 
+module markers() {
+	// temporaere Marker fuer Knopf
+	translate([poticenter,0,0]) cylinder(0.2,r=innenknopfdurchmesser/2);
+	translate([poticenter,0,2]) cylinder(3,r=potidurchmesser/2);
+};
+
 difference() {
 	voll();
 translate([0,0,deckeldicke]) difference()
@@ -48,10 +56,7 @@ translate([0,0,deckeldicke]) difference()
 	// und ein Kabelloch. Mache den Lochzylinder ein bisschen zu lang, weil sonst das Innenloch wegen der Kruemmung nicht vollstaendig ist.
 	rotate([0,-20,20]) translate([0,0,2+deckeldicke]) rotate([0,-90,0]) cylinder(1100, r=kabeldicke/2);
 
-	// temporaere Marker fuer Knopf
-	translate([poticenter,0,0]) cylinder(0.1,r=12.7);
-	translate([poticenter,0,0]) cylinder(0.2,r=10);
-	translate([poticenter,0,2]) cylinder(3,r=12.5/2)
+	markers();
 
 	// und ein Loch fuer die LED 3mm. Die von Conrad bestellte hat 2.9 und Rand 3.1
 	translate([-8,0,-40]) cylinder(100, r=1.45);

@@ -56,19 +56,22 @@ module markers() {
 	translate([poticenter,0,2]) cylinder(3,r=potidurchmesser/2);
 };
 
-difference() {
-	ohneloecher();
+module knopf() {
+	difference() {
+		ohneloecher();
 
-	// Loch fuer das Poti: Gewinde M7
-	translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2);
+		// Loch fuer das Poti: Gewinde M7
+		translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2);
 
-	// Platz fuer Potikoerper
-	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
+		// Platz fuer Potikoerper
+		translate([poticenter,0,deckeldicke])
+			cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
 
-	markers();
+		markers();
 
-	// und ein Loch fuer die LED 3mm. Die von Conrad bestellte hat 2.9 und Rand 3.1
-	translate([-8,0,-40]) cylinder(100, r=1.45);
+		// und ein Loch fuer die LED 3mm. Die von Conrad bestellte hat 2.9 und Rand 3.1
+		translate([-8,0,-40]) cylinder(100, r=1.45);
+	}
+};
 
-}
-
+//knopf();

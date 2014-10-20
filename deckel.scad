@@ -21,13 +21,16 @@ $fa=0.1;
 $fs=0.5;
 
 module voll() {
-	intersection() {
-	 	cylinder(h=1000, r=spaceraussen/2,center=true);
-		translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, r=spaceraussen/2);
-		union() {
-			cylinder(h=deckelhoehe, r=spaceraussen/2);
-			translate([-105,0,5]) rotate([0,70,0]) cylinder(h=100, r=40);
-		}
+	difference() {
+		intersection() {
+	 		cylinder(h=1000, r=spaceraussen/2,center=true);
+			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, r=spaceraussen/2);
+			union() {
+				cylinder(h=deckelhoehe, r=spaceraussen/2);
+				translate([-105,0,5]) rotate([0,70,0]) cylinder(h=100, r=40);
+			}
+		} 
+		translate([poticenter,0,0]) rotate([0,180,0]) cylinder(h=10, r=knopfdurchmesser/2);
 	};
 };
 

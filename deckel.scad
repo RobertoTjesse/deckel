@@ -65,14 +65,10 @@ difference() {
 	// Platz fuer Potikoerper
 	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
 
-	// und ein Kabelloch. Mache den Lochzylinder ein bisschen zu lang, weil sonst das Innenloch wegen der Kruemmung nicht vollstaendig ist.
-	rotate([0,-20,20]) translate([0,0,2+deckeldicke]) rotate([0,-90,0]) cylinder(1100, r=kabeldicke/2);
-
 	markers();
 
 	// und ein Loch fuer die LED 3mm. Die von Conrad bestellte hat 2.9 und Rand 3.1
 	translate([-8,0,-40]) cylinder(100, r=1.45);
 
 }
-
 

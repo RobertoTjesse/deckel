@@ -32,7 +32,7 @@ module voll() {
 				translate([-105,0,5]) rotate([0,70,0]) cylinder(h=100, r=40);
 			}
 		} 
-		translate([poticenter,0,0]) rotate([0,180,0]) cylinder(h=10, r=knopfdurchmesser/2);
+		translate([poticenter,0,0.01]) rotate([0,180,0]) cylinder(h=10, r=knopfdurchmesser/2);
 	};
 };
 

@@ -49,7 +49,8 @@ translate([0,0,deckeldicke]) difference()
 	cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2);
 }
 	translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2); // Loch M7 Gewinde
-	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=12.5/2+toleranz); // so breit ist das Poti am Fuss
+	// Platz fuer Potikoerper
+	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
 	translate([0,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2 - randstaerkeinnen);
 
 	// und ein Kabelloch. Mache den Lochzylinder ein bisschen zu lang, weil sonst das Innenloch wegen der Kruemmung nicht vollstaendig ist.

@@ -35,6 +35,21 @@ module voll() {
 	};
 };
 
+module ohneloecher() {
+	difference() {
+		voll();
+		// die Rohraufnahme
+		translate([0,0,deckeldicke]) difference()
+		{
+			cylinder(deckelhoehe-deckeldicke, r=rohraussen/2);
+			cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2);
+		}
+		// Innenbereich
+		translate([0,0,deckeldicke])
+			cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2 - randstaerkeinnen);
+	}
+};
+
 module markers() {
 	// temporaere Marker fuer Knopf
 	translate([poticenter,0,0]) cylinder(0.2,r=innenknopfdurchmesser/2);
@@ -42,19 +57,13 @@ module markers() {
 };
 
 difference() {
-	voll();
-translate([0,0,deckeldicke]) difference()
-{
-	cylinder(deckelhoehe-deckeldicke, r=rohraussen/2);
-	cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2);
-}
+	ohneloecher();
 
 	// Loch fuer das Poti: Gewinde M7
 	translate([poticenter,0,0]) cylinder(deckelhoehe, r=m7/2);
 
 	// Platz fuer Potikoerper
 	translate([poticenter,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=potidurchmesser/2+toleranz);
-	translate([0,0,deckeldicke]) cylinder(deckelhoehe-deckeldicke, r=(rohrinnen-toleranz)/2 - randstaerkeinnen);
 
 	// und ein Kabelloch. Mache den Lochzylinder ein bisschen zu lang, weil sonst das Innenloch wegen der Kruemmung nicht vollstaendig ist.
 	rotate([0,-20,20]) translate([0,0,2+deckeldicke]) rotate([0,-90,0]) cylinder(1100, r=kabeldicke/2);

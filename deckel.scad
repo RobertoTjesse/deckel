@@ -12,10 +12,9 @@ spacerinnen=29;
 spaceraussen=36;
 toleranz = 0.2;
 knopfdurchmesser = 23.7; // mit Rand
-poticenter = (spaceraussen-knopfdurchmesser)/2;
-poticenter = (rohrinnen-12.5)/2 - toleranz;
 potidurchmesser = 12.5;
 innenknopfdurchmesser = 21;
+poticenter = (rohrinnen-potidurchmesser)/2 - toleranz;
 kabeldicke=3.3;
 m7=7;
 

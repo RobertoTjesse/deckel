@@ -107,7 +107,7 @@ module poti() {
 
 module henkel() {
 	// um daran den Forumslader aufzuhängen, evtl. mit einer Feder.
-	henkeldicke = 2;
+	henkeldicke = 3;
 	intersection() {
 		translate([-4,3.5,3])
 			rotate([0,90,160])

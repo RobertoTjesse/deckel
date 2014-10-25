@@ -103,6 +103,10 @@ module poti() {
 	// Platz fuer Potikoerper
 	translate([poticenter,0,deckeldicke])
 		cylinder(deckelhoehe-deckeldicke, d=potidurchmesser+toleranz*2);
+
+	// Platz fuer Potideckel
+	translate([poticenter,0,-100])
+		cylinder(100, d=knopfdurchmesser);
 };
 
 module henkel() {

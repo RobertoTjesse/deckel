@@ -131,7 +131,7 @@ module knopf() {
 		kabel();
 		poti();
 		led();
-		markers();
+//		markers();
 	}
 	henkel();
 //	oring();

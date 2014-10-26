@@ -23,7 +23,7 @@ m7=7;
 
 $fa=0.1;
 $fs=0.5;
-$fn=30;
+$fn=100;
 
 module kabelkanal() {
 	strength=2; // the hull is 2.0mm thick

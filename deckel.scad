@@ -26,7 +26,7 @@ $fs=0.5;
 $fn=100;
 
 module kabelkanal() {
-	strength=2.5; // the hull
+	strength=3; // the hull
 	rotate_extrude(convexity=10)
 		translate([kabelaussenradius,0,0])
 			circle(d=kabeldicke+strength*2);

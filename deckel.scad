@@ -113,8 +113,8 @@ module henkel() {
 	// um daran den Forumslader aufzuhängen, evtl. mit einer Feder.
 	henkeldicke = 3;
 	intersection() {
-		translate([-4,3.5,3])
-			rotate([0,90,160])
+		translate([-3,5.5,3])
+			rotate([0,90,165])
 				rotate_extrude(convexity=10)
 					translate([4,0,0])
 						circle(d=henkeldicke);

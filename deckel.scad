@@ -1,6 +1,8 @@
 // exakte Rohrmasse> aussen 28.6, innen 23,9
 
-// TODO: ist das weit genug? Haengt vom Material ab.
+// Dieser Script passt für Trinckle Kunststoff-Sinter. Das ist aber
+// nicht ausreichend wasserdicht.
+
 
 rohraussen = 28.6;
 rohrinnen = 23.9;

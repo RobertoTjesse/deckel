@@ -11,14 +11,14 @@ deckelhoehe = 7.5;
 randstaerkeinnen = 2.1;
 randstaerkeaussen = 3.6;
 spacerinnen=29;
-spaceraussen=36;
+deckelaussen=33;
 vorbaudicke=33.5;
 toleranz = 0.1;
 knopfdurchmesser = 20.5;
 potidurchmesser = 12.5;
 poticenter = (rohrinnen-potidurchmesser)/2 - 1;
 kabeldicke=3.3;
-kabelaussenradius=10; // enger sollte ich nicht
+kabelaussenradius=10;
 innenbereich=rohrinnen-toleranz*2 - randstaerkeinnen*2;
 
 kabelkreisX=-12.2;
@@ -63,11 +63,11 @@ module voll() {
 		intersection() {
 			union() {
 				// der Hauptkoerper:
-				cylinder(h=deckelhoehe, d=spaceraussen);
+				cylinder(h=deckelhoehe, d=deckelaussen);
 				translate([kabelkreisX,kabelkreisY,kabelkreisZ]) rotate([0,90,110]) kabelkanal();
 			}
 			// säge ab, was wir vom Kabelkanal nicht wollen
-			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, d=spaceraussen);
+			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, d=deckelaussen);
 		} 
 	};
 }

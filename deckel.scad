@@ -99,7 +99,7 @@ module led() {
 	// und ein Loch fuer die LED 3mm. Die von Conrad bestellte hat 2.9 und Rand 3.1.
 	// Ihr schmaler Teil ist 2.9x3.28mm, der Sockel hat 3.1x1.02mm. Sie steht also
 	// bei deckeldicke 2.5mm um 0.4mm über.
-	rotate([0,0,160]) translate([(innenbereich-3.1)/2,0,0]) cylinder(100, d=2.9);
+	rotate([0,0,160]) translate([(innenbereich-3.3)/2,0,0]) cylinder(100, d=2.9);
 };
 
 module poti() {

@@ -9,7 +9,6 @@ rohrinnen = 23.9;
 deckeldicke = 2.5; // die Raendelmutter braucht etwa 2.5mm von Gewinde plus Deckel gibt 5.0. Und das Gewinde hat 5.6
 deckelhoehe = 7.5;
 randstaerkeinnen = 2.1;
-randstaerkeaussen = 3.6;
 spacerinnen=29;
 deckelaussen=33;
 vorbaudicke=33.5;

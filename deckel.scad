@@ -21,6 +21,10 @@ kabeldicke=3.3;
 kabelaussenradius=10; // enger sollte ich nicht
 innenbereich=rohrinnen-toleranz*2 - randstaerkeinnen*2;
 
+kabelkreisX=-12.2;
+kabelkreisY=-8;
+kabelkreisZ=9.3;
+
 m7=7;
 
 $fa=0.1;
@@ -35,7 +39,7 @@ module kabelkanal() {
 };
 
 module kabel() {
-	translate([-12.2,-8,9.3])
+	translate([kabelkreisX,kabelkreisY,kabelkreisZ])
 		rotate([0,90,110])
 			rotate_extrude(convexity=10)
 				translate([kabelaussenradius,0,0])
@@ -60,7 +64,7 @@ module voll() {
 			union() {
 				// der Hauptkoerper:
 				cylinder(h=deckelhoehe, d=spaceraussen);
-				translate([-12.2,-8,9.3]) rotate([0,90,110]) kabelkanal();
+				translate([kabelkreisX,kabelkreisY,kabelkreisZ]) rotate([0,90,110]) kabelkanal();
 			}
 			// säge ab, was wir vom Kabelkanal nicht wollen
 			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, d=spaceraussen);

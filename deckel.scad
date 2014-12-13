@@ -37,7 +37,7 @@ randstaerkeinnen = 2.1;
 spacerinnen=29;
 deckelaussen=33;
 vorbaudicke=33.5;
-toleranz = 0.2;
+toleranz = 0.1;
 knopfdurchmesser = 20.5;
 potidurchmesser = 12.5;
 poticenter = (rohrinnen-potidurchmesser)/2 - 1;
@@ -103,8 +103,8 @@ module ohneloecher() {
 		// die Rohraufnahme
 		translate([0,0,deckeldicke]) difference()
 		{
-			cylinder(deckelhoehe-deckeldicke, d=rohraussen+toleranz);
-			cylinder(deckelhoehe-deckeldicke, d=rohrinnen-toleranz);
+			cylinder(deckelhoehe-deckeldicke, d=rohraussen);
+			cylinder(deckelhoehe-deckeldicke, d=rohrinnen);
 		}
 		// Innenbereich
 		translate([0,0,deckeldicke])

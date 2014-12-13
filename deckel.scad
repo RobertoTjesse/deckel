@@ -22,6 +22,11 @@ IN THE SOFTWARE.
 
 exakte Rohrmasse> aussen 28.6, innen 23,9
 
+Dieser Script sollte für http://www.fabberhouse.de passen.
+Damit habe ich 4 Deckel gemacht, die aber alle mehr oder weniger zu
+locker sitzen. Ihre Werte für die Toleranz waren 0.15, 0.20, 0.25,
+welches der vierte Wert war, weiss ich leider nicht mehr.
+
 */
 
 rohraussen = 28.6;

@@ -92,7 +92,7 @@ module voll() {
 			}
 			// säge ab, was wir vom Kabelkanal nicht wollen
 			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, d=deckelaussen);
-		} 
+		}
 	};
 }
 };

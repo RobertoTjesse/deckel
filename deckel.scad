@@ -22,9 +22,6 @@ IN THE SOFTWARE.
 
 exakte Rohrmasse> aussen 28.6, innen 23,9
 
-Dieser Script passt für Trinckle Kunststoff-Sinter. Das ist aber
-nicht ausreichend wasserdicht.
-
 */
 
 rohraussen = 28.6;

@@ -38,7 +38,7 @@ deckelhoehe = 8.5;
 randstaerkeinnen = 2.1;
 deckelaussen=33;
 toleranz = 0.1;
-kabeldicke=3.2;
+kabeldicke=3.4;
 kabelaussenradius=90;
 innenbereich=rohrinnen-toleranz*2 - randstaerkeinnen*2;
 

@@ -29,23 +29,19 @@ welches der vierte Wert war, weiss ich leider nicht mehr.
 
 */
 
+//meine exakten Rohrmasse
 rohraussen = 28.6;
 rohrinnen = 23.9;
-deckeldicke = 2.5; // die Raendelmutter braucht etwa 2.5mm von Gewinde plus Deckel gibt 5.0. Und das Gewinde hat 5.6
-deckelhoehe = 7.5;
+
+deckeldicke = 2.5;
+deckelhoehe = 8.5;
 randstaerkeinnen = 2.1;
-spacerinnen=29;
 deckelaussen=33;
-vorbaudicke=33.5;
 toleranz = 0.1;
-knopfdurchmesser = 20.5;
-kabeldicke=3.3;
-kabelaussenradius=10;
+kabeldicke=3.6;
+kabelaussenradius=90;
 innenbereich=rohrinnen-toleranz*2 - randstaerkeinnen*2;
 
-kabelkreisX=-12.2;
-kabelkreisY=-8;
-kabelkreisZ=9.3;
 
 m7=7;
 
@@ -53,41 +49,57 @@ $fa=0.1;
 $fs=0.5;
 $fn=100;
 
-module kabelkanal() {
-	strength=2; // the hull
-	rotate_extrude(convexity=10)
-		translate([kabelaussenradius,0,0])
-			circle(d=kabeldicke+strength*2);
+module kanal(durchmesser) {
+	kabelkreisY=0;
+	kabelkreisZ=1;
+	difference() {
+		translate([-30,kabelkreisY,11.2-kabelaussenradius])
+			rotate([0,90,90])
+				rotate_extrude(convexity=10)
+					translate([kabelaussenradius,0,-kabelaussenradius])
+						circle(d=durchmesser);
+		// weil der sonst auf der anderen Knopfseite auch noch durchgeht:
+		translate([innenbereich*0.8/2,-50,0]) cube(size=[100,100,deckelhoehe],center=false);
+	};
 };
+
+module kabelkanal() {
+	kanal(durchmesser=kabeldicke+4);
+}
 
 module kabel() {
-	translate([kabelkreisX,kabelkreisY,kabelkreisZ])
-		rotate([0,90,110])
-			rotate_extrude(convexity=10)
-				translate([kabelaussenradius,0,0])
-					circle(d=kabeldicke);
+	kanal(durchmesser=kabeldicke);
+}
+
+module nofrills2d() {
+	ha=deckelhoehe;            // hoehe aussen
+	hi=ha-deckeldicke;         // hoehe innen
+	ri=innenbereich/2;         // innenbereich
+	rri=ri+randstaerkeinnen;   // Rohraufnahme innen
+	rra=rohraussen/2;          // Rohraufnahme aussen
+	hri=4;
+	ra=deckelaussen/2;         // deckelaussen
+	kr=4;		   // Randkruemmung
+	kele=100;
+	kx=ra-kr;
+	ky=ha-kr;
+	polygon(concat([[0,hi],[ri,hi],[ri,0],[rri,0],[rri,hri],[rra,hri],[rra,0],
+		[ra,0],
+		// jetzt sind wir aussen unten und gehen erstmal senkrecht rauf
+		[kx+kr,ky]],
+		[for (i=[0:kele-1]) [kx+kr*cos(90*i/kele),ky+kr*sin(90*i/kele)]],
+		[[kx,ky+kr],
+		// und Abschluss innen oben
+		[0,ha]]));
 };
 
-//	translate([-13,-4,11.3]) rotate([0,90,110]) kabelkanal();
-module voll() {
-	union() {
-	difference() {
-		intersection() {
-			union() {
-				// der Hauptkoerper:
-				cylinder(h=deckelhoehe, d=deckelaussen);
-				translate([kabelkreisX,kabelkreisY,kabelkreisZ]) rotate([0,90,110]) kabelkanal();
-			}
-			// säge ab, was wir vom Kabelkanal nicht wollen
-			translate([0,0,deckelhoehe-0.001]) rotate([180,0,0]) cylinder(h=1000, d=deckelaussen);
-		}
-	};
-}
+module nofrills() {
+	rotate([0,0,0]) rotate_extrude() nofrills2d();
 };
 
 module ohneloecher() {
 	difference() {
-		voll();
+		nofrills();
 		// die Rohraufnahme
 		translate([0,0,deckeldicke]) difference()
 		{
@@ -101,11 +113,21 @@ module ohneloecher() {
 };
 
 module knopf() {
-	difference() {
-		ohneloecher();
-		kabel();
-	}
+	intersection() {
+		difference() {
+			union() {
+				nofrills();
+				kabelkanal();
+			};
+			// Kabel nicht schon in kabelkanal(), weil dann der Durchlass durch den Deckel fehlt
+			kabel();
+			// Innenbereich vom Rohr freihalten
+			translate([0,0,deckelhoehe-deckeldicke])
+				rotate([0,180,0]) cylinder(100, d=innenbereich);
+		};
+		cylinder(h=1000,d=deckelaussen);
+	};
+
 };
 
 knopf();
-
